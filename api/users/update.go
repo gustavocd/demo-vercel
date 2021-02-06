@@ -2,7 +2,6 @@ package users
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -30,7 +29,6 @@ func Update(w http.ResponseWriter, r *http.Request) {
 
 	db, _ := web.OpenConn()
 	if _, err := db.ExecContext(r.Context(), q, user.Name, user.Email, id); err != nil {
-		fmt.Println((err.Error()))
 		web.Respond(w, nil, http.StatusInternalServerError)
 		return
 	}

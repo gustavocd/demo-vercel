@@ -1,7 +1,6 @@
 package users
 
 import (
-	"fmt"
 	"net/http"
 	"time"
 
@@ -41,7 +40,6 @@ func FetchAll(w http.ResponseWriter, r *http.Request) {
 	db, _ := web.OpenConn()
 	var users []Info
 	if err := db.SelectContext(r.Context(), &users, q); err != nil {
-		fmt.Println("asdasdadas", err.Error())
 		web.Respond(w, users, http.StatusInternalServerError)
 		return
 	}
